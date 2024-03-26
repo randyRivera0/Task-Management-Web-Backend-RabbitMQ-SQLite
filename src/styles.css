@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+.titulo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.youtube-icon {
+    width: 50px;
+    height: 30px;
+    background-image: url('./assets/morado2.png');
+    background-size: cover;
+    margin-right: 20px; /* Ajusta el margen derecho para mover la imagen a la izquierda */
+}
+
+
+.titulo {
+    font-size: 2.5rem;
+    background: linear-gradient(to right, black, purple); /* Degradado de negro a morado */
+    -webkit-background-clip: text; /* Aplicar el degradado al texto para navegadores WebKit */
+    background-clip: text; /* Aplicar el degradado al texto de forma estándar */
+    -webkit-text-fill-color: transparent; /* Hacer transparente el color del texto para navegadores WebKit */
+}

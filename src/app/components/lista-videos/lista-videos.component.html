@@ -1,0 +1,30 @@
+<h2>List of videos</h2>
+<div class="row">
+    <div class="col">
+        <div class="form-group">
+            <input type="text" class="form-control" title="filterVideo" placeholder="Buscar..." [(ngModel)]="filterVideo">
+        </div>
+
+    </div>
+
+</div>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Titulo</th>
+            <th>Descrption</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor= "let video of videos | filter:filterVideo"> 
+            <td>{{ video.title }}</td>
+            <td>{{video.description}}</td>
+            <td>
+                <button (click)= "actualizar(video.id)" class="btn btn-info">Editar</button>
+                <button (click)= "eliminar(video.id)" class="btn btn-info" style="margin-left: 10px;">Eliminar</button>
+                <button (click)= "ver(video.id)" class="btn btn-primary" style="margin-left: 10px;">Reproducir</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,71 @@
+<div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Video addition</h3>
+    <form (ngSubmit)= "onSubmit()" #videoForm="ngForm">
+        <div class="form-group">
+            <label>Titulo: </label>
+            <input type="text"
+            class="form-control"
+            id = "title"
+            [(ngModel)] = "video.title"
+            name="title"
+            required
+            minlength="4"
+            maxlength="30"
+            placeholder="digite titulo"
+            #title = ngModel
+            >
+            <div class="alert alert-danger" *ngIf= "title.invalid && (title.dirty || title.touched)">
+                <div *ngIf="title.errors?.['required']">
+                    digite titulo por favor
+                </div>
+                <div *ngIf = "title.errors?.['minlength']">
+                    El titulo tiene que contener como minimo 4 caracteres
+                  </div>
+                  <div *ngIf = "title.errors?.['maxlength']">
+                    El titulo tiene que tener como maximo 30 caracteres
+                  </div>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label>Descripcion: </label>
+            <input type="text"
+            class="form-control"
+            id = "description"
+            [(ngModel)] = "video.description"
+            name="description"
+            required
+            minlength="4"
+            maxlength="30"
+            placeholder="Digite la description"
+            #description = "ngModel"
+            >
+            <div class="alert alert-danger" *ngIf= "description.invalid && (description.dirty || description.touched)">
+                <div *ngIf = "description.errors?.['required']">
+                  Digite su description por favor
+                </div>
+                <div *ngIf = "description.errors?.['minlength']">
+                  tiene que contener como minimo 4 caracteres
+                </div>
+                <div *ngIf = "description.errors?.['maxlength']">
+                  tiene que tener como maximo 30 caracteres
+                </div>
+              </div>
+        </div>
+
+
+        <div class="form-group">
+            <label>URL: </label>
+            <input type="text"
+            class="form-control"
+            id = "videourl"
+            [(ngModel)] = "video.videourl"
+            name="videourl"
+            >
+
+        </div>
+        <button class="btn btn-success" [disabled]= "!videoForm.form.valid">Guardar</button>
+    </form>
+    
+</div>
