@@ -1,4 +1,4 @@
-import json, sys, pika, time, sqlite3
+import json, sys, pika, time, sqlite3, os
 import Task  # Import the Task class from task.py
 
 # Function to process received task
@@ -18,8 +18,13 @@ def process_task(channel, method, properties, body):
 # Adjusted store_task_in_database function
 def store_task_in_database(department, task):
     try:
+         # Get the current working directory
+        cwd = os.getcwd()
+
+        # Define the path to the database file relative to the current working directory
+        db_path = os.path.join(cwd, 'prototype\\tasks.db')
         # Connect to the SQLite database
-        conn = sqlite3.connect('tasks.db')
+        conn = sqlite3.connect(db_path)
         print("Connection with the DataBase successful")
         c = conn.cursor()
 
@@ -28,7 +33,7 @@ def store_task_in_database(department, task):
 
         # Create table if not exists
         c.execute(f'''CREATE TABLE IF NOT EXISTS {department}
-                 (id INTEGER PRIMARY KEY, name TEXT, description TEXT, deadline TEXT, importance TEXT, duration TEXT, progress REAL, state TEXT, blocked INTEGER, block_reason TEXT)''')
+                 (id INTEGER PRIMARY KEY, name TEXT, description TEXT, deadline TEXT, importance TEXT, duration INTEGER, progress REAL, state TEXT, blocked INTEGER, block_reason TEXT)''')
 
 
         # Insert task data into the database
@@ -65,12 +70,18 @@ def receive_tasks_from_rabbitmq(department):
 
 # Create a table to store tasks in the SQLite database
 def create_database_schema():
-    conn = sqlite3.connect('tasks.db')
+     # Get the current working directory
+    cwd = os.getcwd()
+
+    # Define the path to the database file relative to the current working directory
+    db_path = os.path.join(cwd, 'prototype\\tasks.db')
+    # Connect to the SQLite database
+    conn = sqlite3.connect(db_path)
     c = conn.cursor()
 
     # Create table if not exists
-    c.execute('''CREATE TABLE IF NOT EXISTS tasks
-                 (id INTEGER PRIMARY KEY, name TEXT, importance TEXT, urgency TEXT, time INTEGER, description TEXT, state TEXT, progress REAL, blocked INTEGER, block_reason TEXT)''')
+    c.execute('''CREATE TABLE IF NOT EXISTS finance
+                 (id INTEGER PRIMARY KEY, name TEXT, description TEXT, deadline TEXT, importance TEXT, duration INTEGER, progress REAL, state TEXT, blocked INTEGER, block_reason TEXT)''')
 
     conn.commit()
     conn.close()

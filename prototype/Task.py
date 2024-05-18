@@ -14,10 +14,6 @@ class Task:
         self.duration = duration
         self.progress = progress
 
-        # hours_left = 1 - duration (hrs) * progress (0-1)
-        # time_range = (deadline - time.day.today) - hours_left
-        # Prioritize by time_range inside medium 
-
         self.state = state
         self.blocked = blocked
         self.blocked_by = blocked_by
