@@ -9,14 +9,14 @@ def process_task(channel, method, properties, body):
     task = Task.Task(**task_data)
 
     # Store task in the database
-    store_task_in_database(task)
+    store_task_in_database(department, task)
 
     # TODO: After task or after db ack?
     channel.basic_ack(delivery_tag=method.delivery_tag)
 
 
 # Adjusted store_task_in_database function
-def store_task_in_database(task):
+def store_task_in_database(department, task):
     try:
         # Connect to the SQLite database
         conn = sqlite3.connect('tasks.db')
@@ -26,8 +26,13 @@ def store_task_in_database(task):
         # Convert state and blocked to integers
         blocked = 1 if task.blocked else 0
 
+        # Create table if not exists
+        c.execute(f'''CREATE TABLE IF NOT EXISTS {department}
+                 (id INTEGER PRIMARY KEY, name TEXT, importance TEXT, urgency TEXT, time INTEGER, description TEXT, state TEXT, progress REAL, blocked INTEGER, block_reason TEXT)''')
+
+
         # Insert task data into the database
-        c.execute("INSERT INTO tasks (id, name, importance, urgency, time, description, state, progress, blocked, block_reason) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+        c.execute(f"INSERT INTO {department} (id, name, importance, urgency, time, description, state, progress, blocked, block_reason) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
                   (task.id, task.name, task.importance, task.urgency, task.time, task.description, task.state, task.progress, blocked, task.block_reason))
         time.sleep(1)
 
@@ -42,14 +47,14 @@ def store_task_in_database(task):
 
 
 # RabbitMQ message consumer function
-def receive_tasks_from_rabbitmq(department, importance_queue):
+def receive_tasks_from_rabbitmq(department):
     connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
     channel = connection.channel()
-    channel.queue_declare(queue=importance_queue, durable=True)
+    channel.queue_declare(queue=department, durable=True)
 
     try:
         # Set up consumer and start consuming
-        channel.basic_consume(queue=importance_queue, on_message_callback=process_task)
+        channel.basic_consume(queue=department, on_message_callback=process_task)
         channel.start_consuming()
     except KeyboardInterrupt:
         print("\nExiting...")
@@ -76,12 +81,11 @@ create_database_schema()
 # Prompt user for the department name
 department = input("Enter the department name: ")
 
-importance_queue = department
 
 # Loop indefinitely
 while True:
         # Buffer message indicating the program is running
         print("Program is running. Press Ctrl+C to exit.")
-        receive_tasks_from_rabbitmq(department, importance_queue)
+        receive_tasks_from_rabbitmq(department)
         time.sleep(1)  # Wait for 1 seconds before checking again
                 
