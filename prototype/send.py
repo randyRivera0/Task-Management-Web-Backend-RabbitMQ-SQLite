@@ -17,6 +17,7 @@ def get_task_from_input():
     
     # Convert necessary properties to appropriate types
     task_info['duration'] = int(task_info['duration'])  # Assuming time is an integer
+    task_info['importance'] = int(task_info['importance'])  # Assuming time is an integer
     task_info['progress'] = float(task_info['progress'])  # Assuming progress is a float
     
     # Convert 'blocked' attribute to a boolean
