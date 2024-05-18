@@ -5,18 +5,18 @@ import Task
 from Task import Task
 
 # TODO: fetch the properties of the class automatically
+# FIXME: add task_id automatically
 
 def get_task_from_input():
     task_info = {}
     
     # Specify the properties you want to collect
-    task_class_properties = ['id', 'name', 'importance', 'urgency', 'time', 'description', 'state', 'progress', 'blocked', 'block_reason']
-    
+    task_class_properties = ['id', 'name', 'description', 'deadline', 'importance', 'duration', 'progress', 'state', 'blocked', 'blocked_by', 'block_reason', 'creation_time']
     for prop in task_class_properties:
         task_info[prop] = input(f"Enter task {prop}: ")
     
     # Convert necessary properties to appropriate types
-    task_info['time'] = int(task_info['time'])  # Assuming time is an integer
+    task_info['duration'] = int(task_info['duration'])  # Assuming time is an integer
     task_info['progress'] = float(task_info['progress'])  # Assuming progress is a float
     
     # Convert 'blocked' attribute to a boolean

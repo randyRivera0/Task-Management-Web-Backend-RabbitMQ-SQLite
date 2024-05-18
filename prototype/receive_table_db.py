@@ -28,12 +28,12 @@ def store_task_in_database(department, task):
 
         # Create table if not exists
         c.execute(f'''CREATE TABLE IF NOT EXISTS {department}
-                 (id INTEGER PRIMARY KEY, name TEXT, importance TEXT, urgency TEXT, time INTEGER, description TEXT, state TEXT, progress REAL, blocked INTEGER, block_reason TEXT)''')
+                 (id INTEGER PRIMARY KEY, name TEXT, description TEXT, deadline TEXT, importance TEXT, duration TEXT, progress REAL, state TEXT, blocked INTEGER, block_reason TEXT)''')
 
 
         # Insert task data into the database
-        c.execute(f"INSERT INTO {department} (id, name, importance, urgency, time, description, state, progress, blocked, block_reason) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                  (task.id, task.name, task.importance, task.urgency, task.time, task.description, task.state, task.progress, blocked, task.block_reason))
+        c.execute(f"INSERT INTO {department} (id, name, description, deadline, importance, duration, progress, state, blocked, block_reason) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                  (task.id, task.name, task.description, task.deadline, task.importance, task.duration, task.progress, task.state, task.blocked, task.block_reason))
         time.sleep(1)
 
         # Commit changes and close connection
