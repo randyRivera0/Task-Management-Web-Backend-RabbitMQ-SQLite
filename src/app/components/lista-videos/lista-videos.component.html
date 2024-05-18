@@ -1,8 +1,12 @@
-<h2>List of videos</h2>
+<body>
+    <app-navbar></app-navbar>
+
+<div class="container">
+    <h2>Lista de Tareas</h2>
 <div class="row">
     <div class="col">
         <div class="form-group">
-            <input type="text" class="form-control" title="filterVideo" placeholder="Buscar..." [(ngModel)]="filterVideo">
+            <input type="text" class="form-control" title="filterTarea" placeholder="Buscar..." [(ngModel)]="filterTarea">
         </div>
 
     </div>
@@ -13,18 +17,29 @@
         <tr>
             <th>Titulo</th>
             <th>Descrption</th>
-            
+            <th>Acciones</th>
+            <!-- <th>Estado</th> -->
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor= "let video of videos | filter:filterVideo"> 
-            <td>{{ video.title }}</td>
-            <td>{{video.description}}</td>
+        <tr *ngFor= "let tarea of tareas | filter:filterTarea"> 
+            <td>{{ tarea.title }}</td>
+            <td>{{tarea.description}}</td>
             <td>
-                <button (click)= "actualizar(video.id)" class="btn btn-info">Editar</button>
-                <button (click)= "eliminar(video.id)" class="btn btn-info" style="margin-left: 10px;">Eliminar</button>
-                <button (click)= "ver(video.id)" class="btn btn-primary" style="margin-left: 10px;">Reproducir</button>
+                <button (click)= "actualizar(tarea.id)" class="btn btn-info">Editar</button>
+                <button (click)= "eliminar(tarea.id)" class="btn btn-danger" style="margin-left: 10px;">Eliminar</button>
+                <button (click)= "ver(tarea.id)" class="btn btn-primary" style="margin-left: 10px;">Detalles</button>
             </td>
+            <!-- <td>
+                <mat-slide-toggle [(ngModel)]="estadosSlideToggle[video.id]" (change)="guardarEstadosSlideToggle()"></mat-slide-toggle>
+            </td> -->
         </tr>
     </tbody>
+    
 </table>
+
+</div>
+
+
+</body>
+

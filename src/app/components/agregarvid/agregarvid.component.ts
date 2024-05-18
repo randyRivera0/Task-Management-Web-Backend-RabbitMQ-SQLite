@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Video } from 'src/app/video';
+import { Tarea } from 'src/app/tarea';
 import { VideoServService } from 'src/app/video-serv.service';
 
 @Component({
@@ -10,18 +10,19 @@ import { VideoServService } from 'src/app/video-serv.service';
 })
 export class AgregarvidComponent implements OnInit {
 
-  video: Video = new Video();
+  tarea: Tarea = new Tarea();
 
-  constructor(private videoServ : VideoServService, private router:Router){}
+  constructor(private tareaServ : VideoServService, private router:Router){}
+
   ngOnInit(): void {
 
-    console.log(this.video);
+    console.log(this.tarea);
       
   }
   //hola 
 
-  guardarvideo(){
-    this.videoServ.agregarvideo(this.video).subscribe(dato => {
+  guardartarea(){
+    this.tareaServ.agregartarea(this.tarea).subscribe(dato => {
       console.log(dato);
       this.irAlalista();
 
@@ -33,7 +34,7 @@ export class AgregarvidComponent implements OnInit {
   }
   onSubmit(){
 
-    this.guardarvideo();
+    this.guardartarea();
     
   }
 

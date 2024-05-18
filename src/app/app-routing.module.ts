@@ -4,10 +4,13 @@ import { ListaVideosComponent } from './components/lista-videos/lista-videos.com
 import { AgregarvidComponent } from './components/agregarvid/agregarvid.component';
 import { ActualizarComponent } from './components/actualizar/actualizar.component';
 import { VerComponent } from './components/ver/ver.component';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
+  
+  {path: 'login', component: LoginComponent},
   {path : 'obtener', component: ListaVideosComponent},
-  {path : '', redirectTo: 'obtener', pathMatch:'full'},
+  {path : '', redirectTo: 'login', pathMatch:'full'},
   {path: 'agregarvid', component: AgregarvidComponent   },
   {path: 'actualizar/:id', component: ActualizarComponent},
   {path: 'ver/:id', component: VerComponent}

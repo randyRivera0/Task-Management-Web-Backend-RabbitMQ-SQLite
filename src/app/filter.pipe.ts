@@ -6,14 +6,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class FilterPipe implements PipeTransform {
 
   transform(value: any, ...arg: any): any {
-    const resultvid=[];
-    for(const video of value){
-      if(video.title.indexOf(arg) > -1){
-        resultvid.push(video);
+    const resulttar=[];
+    for(const tarea of value){
+      if(tarea.title.indexOf(arg) > -1){
+        resulttar.push(tarea);
       };
     };
 
-    return resultvid;
+    return resulttar;
 
   }
 

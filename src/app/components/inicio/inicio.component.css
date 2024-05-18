@@ -1,0 +1,17 @@
+body {
+    background-image: url('../../../../assets/fondoteclado.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.titulo {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600; /* Peso de la fuente */
+    font-size: 2em; /* Tamaño de la fuente */
+    color: white; /* Rojo */
+    text-transform: uppercase; /* Convertir texto a mayúsculas */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Sombreado */
+    text-align: center;
+}

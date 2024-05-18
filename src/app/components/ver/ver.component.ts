@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Video } from 'src/app/video';
+import { Tarea } from 'src/app/tarea';
 import { VideoServService } from 'src/app/video-serv.service';
 
 @Component({
@@ -11,16 +11,15 @@ import { VideoServService } from 'src/app/video-serv.service';
 export class VerComponent implements OnInit{
 
   id:number;
-  video: Video;
-  
+  tarea: Tarea;
 
-  constructor(private route:ActivatedRoute, private videoserv: VideoServService){}
+  constructor(private route:ActivatedRoute, private tareaserv: VideoServService){}
 
   ngOnInit(): void {
       this.id = this.route.snapshot.params['id'];
-      this.video = new Video();
-      this.videoserv.obtenerporId(this.id).subscribe(dato => {
-        this.video = dato;
+      this.tarea = new Tarea();
+      this.tareaserv.obtenerporId(this.id).subscribe(dato => {
+        this.tarea = dato;
       });
   }
 

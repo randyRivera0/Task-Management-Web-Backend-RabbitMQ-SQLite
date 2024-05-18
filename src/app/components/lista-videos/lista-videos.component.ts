@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Video } from 'src/app/video';
+
 import { VideoServService } from 'src/app/video-serv.service';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { Tarea } from 'src/app/tarea';
 
 @Component({
   selector: 'app-lista-videos',
@@ -12,31 +13,45 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 })
 export class ListaVideosComponent implements OnInit {
 
-  videos: Video[];
-  
-  constructor(private videoserv: VideoServService,  private router: Router){}
-  filterVideo:'';
-  ngOnInit(): void {
+  // estadosSlideToggle: { [key: number]: boolean } = {};
+  tareas: Tarea[];
 
-    this.obtenervideos();
+  
+  constructor(private tareaserv: VideoServService,  private router: Router){}
+  filterTarea:'';
+  ngOnInit(): void {
+    // this.cargarEstadosSlideToggle();
+
+    this.obtenertareas();
 
   }
+//   guardarEstadosSlideToggle(): void {
+//     localStorage.setItem('estadosSlideToggle', JSON.stringify(this.estadosSlideToggle));
+// }
+
+//   cargarEstadosSlideToggle(): void {
+//     const estados = JSON.parse(localStorage.getItem('estadosSlideToggle') || '{}');
+//     this.videos.forEach(video => {
+//         this.estadosSlideToggle[video.id] = estados[video.id] || false;
+//     });
+// }
+
 
   actualizar(id:number){
     this.router.navigate(['actualizar', id]);
   }
 
   eliminar(id:number){
-    this.videoserv.eliminar(id).subscribe(dato => {
+    this.tareaserv.eliminar(id).subscribe(dato => {
       console.log(dato);
-      this.obtenervideos();
+      this.obtenertareas();
     })
   }
 
-  private obtenervideos(){
-    this.videoserv.obtenervideos().subscribe(dato => {
+  private obtenertareas(){
+    this.tareaserv.obtenertareas().subscribe(dato => {
 
-      this.videos = dato;
+      this.tareas = dato;
 
     });
   }
@@ -46,6 +61,15 @@ export class ListaVideosComponent implements OnInit {
   }
 
 
+  // swichear(index: number, cambio: boolean){
+  //   console.log(index);
+  //   this.videoserv.swichear(index, cambio);
+  // }
+
+  // getSlideToggleState(index: number): boolean {
+  //   const estadoGuardado = window.localStorage.getItem(`slideToggleState${index}`);
+  //   return estadoGuardado ? JSON.parse(estadoGuardado) : false;
+  // }
 
 
 }

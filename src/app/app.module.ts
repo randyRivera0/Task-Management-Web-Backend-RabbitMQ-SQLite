@@ -14,7 +14,11 @@ import { VerComponent } from './components/ver/ver.component';
 import { SafePipe } from './components/safe.pipe';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FilterPipe } from './filter.pipe';
-
+import { LoginComponent } from './components/login/login.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { FilterPipe } from './filter.pipe';
     ActualizarComponent,
     VerComponent,
     SafePipe,
-    FilterPipe
+    FilterPipe,
+    LoginComponent,
+    InicioComponent,
+    NavbarComponent,
+    
     
   ],
   imports: [
@@ -34,8 +42,9 @@ import { FilterPipe } from './filter.pipe';
     MatSlideToggleModule,
     HttpClientModule,
     FormsModule,
-    
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatToolbarModule,
+    RouterModule
     
   ],
   providers: [],

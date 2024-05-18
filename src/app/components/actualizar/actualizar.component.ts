@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Video } from 'src/app/video';
 import { VideoServService } from 'src/app/video-serv.service';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Tarea } from 'src/app/tarea';
 
 @Component({
   selector : 'app-actualizar',
@@ -15,9 +15,9 @@ export class ActualizarComponent implements OnInit{
 
   id:number;
   title:string;
-  video:Video = new Video();
+  tarea:Tarea = new Tarea();
 
-  constructor(private videoserv: VideoServService, private router: Router, private route:ActivatedRoute, private fb: FormBuilder){
+  constructor(private tareaserv: VideoServService, private router: Router, private route:ActivatedRoute, private fb: FormBuilder){
     
   }
 
@@ -25,8 +25,8 @@ export class ActualizarComponent implements OnInit{
   ngOnInit(): void {
 
     this.id = this.route.snapshot.params['id'];
-    this.videoserv.obtenerporId(this.id).subscribe(dato =>{
-      this.video = dato;
+    this.tareaserv.obtenerporId(this.id).subscribe(dato =>{
+      this.tarea = dato;
     }, error => console.log(error));
   }
 
@@ -35,7 +35,7 @@ export class ActualizarComponent implements OnInit{
   }
 
   onSubmit(){
-    this.videoserv.actualizar(this.id, this.video).subscribe( dato =>{
+    this.tareaserv.actualizar(this.id, this.tarea).subscribe( dato =>{
       this.irAlalista();
     }, error => console.log(error));
   }

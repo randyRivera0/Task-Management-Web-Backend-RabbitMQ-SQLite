@@ -1,0 +1,73 @@
+
+
+<body>
+    <div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form>
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input type="text" name="txt" placeholder="User name" [(ngModel)]= signupObj.username>
+					<input type="password" name="pswd" placeholder="Password" [(ngModel)]= signupObj.password>
+                    <input type="text" name="role" placeholder="role" [(ngModel)]= signupObj.role>
+					<button (click)="onSignUp()">Sign up</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form>
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="text" name="userNmae" placeholder="username" [(ngModel)]= loginObj.username>
+					<input type="password" name="psswdord" placeholder="Password" [(ngModel)]= loginObj.password>
+					<button (click)="onLogin()">Login</button>
+				</form>
+			</div>
+	</div>
+
+
+</body>
+    
+
+
+
+
+<!-- 
+<div class="body">
+    <div class="login">
+        <mat-spinner *ngIf="loading" class="spinner" diameter="50"></mat-spinner>
+
+        <form *ngIf= "!loading" [formGroup]= "form" (ngSubmit)= "ingresar()">
+            <img src="./assets/images/usuarios.png" width="50%">
+        <h1>Login</h1>
+        <mat-form-field class="ancho">
+            <mat-label>Username</mat-label>
+            <input type="text" matInput formControlName="username" >
+        </mat-form-field>
+        <mat-form-field class="ancho">  
+            <mat-label>Password</mat-label>
+            <input type="password" matInput formControlName="password">
+        </mat-form-field>
+        <mat-form-field class="ancho">
+            <mat-label>Role</mat-label>
+            <input type="text" matInput formControlName="role" >
+        </mat-form-field>
+        <br>
+        <button (click)= "ingresar()" type="submit" class="ancho button" mat-raised-button color="warn" [disabled]= "form.invalid">Sign In</button>
+        </form>
+        
+    </div>
+</div> -->
+
+<!-- --------------------------------------------------------------------------------------------------- -->
+
+
+ <!-- <form (ngSubmit)="ingresar(username.value, password.value)">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" #username required>
+  
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" #password required>
+  
+    <button type="submit">Login</button>
+  </form>
+   -->
