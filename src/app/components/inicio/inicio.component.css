@@ -1,5 +1,5 @@
 body {
-    background-image: url('../../../../assets/fondoteclado.png');
+    background-image: url('../../../assets/fondoteclado.png');
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -14,4 +14,22 @@ body {
     text-transform: uppercase; /* Convertir texto a mayúsculas */
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Sombreado */
     text-align: center;
+}
+.text-container {
+    font-family: Arial, sans-serif; /* Choose a font */
+    font-size: 2em; /* Adjust font size as needed */
+    font-weight: bold; /* Make the text bold */
+    color: black; /* Set text color to black */
+    text-transform: uppercase; /* Ensure the text is in uppercase */
+    text-shadow: 2px 2px 4px #000000; /* Add black shadow around the text */
+}
+.mat-mdc-form-field + .mat-mdc-form-field {
+    margin-left: 8px;
+  }
+
+  .texto-con-sombra {
+    color: white; /* Color del texto */
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7); /* Sombra del texto */
+    font-size: 40px; /* Tamaño de la fuente */
+    font-family: Arial, sans-serif; /* Fuente */
 }

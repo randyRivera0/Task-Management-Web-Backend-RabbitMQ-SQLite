@@ -5,6 +5,7 @@ import { AgregarvidComponent } from './components/agregarvid/agregarvid.componen
 import { ActualizarComponent } from './components/actualizar/actualizar.component';
 import { VerComponent } from './components/ver/ver.component';
 import { LoginComponent } from './components/login/login.component';
+import { InicioComponent } from './components/inicio/inicio.component';
 
 const routes: Routes = [
   
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path : '', redirectTo: 'login', pathMatch:'full'},
   {path: 'agregarvid', component: AgregarvidComponent   },
   {path: 'actualizar/:id', component: ActualizarComponent},
-  {path: 'ver/:id', component: VerComponent}
+  {path: 'ver/:id', component: VerComponent},
+  {path: 'inicio', component: InicioComponent}
 ];
 
 @NgModule({

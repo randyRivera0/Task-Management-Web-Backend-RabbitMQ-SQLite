@@ -1,0 +1,26 @@
+body {
+    background-image: url('../../../assets/fondoteclado.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+mat-slider {
+    width: 600px;
+  }
+
+  .texto-con-sombra {
+    color: white; /* Color del texto */
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7); /* Sombra del texto */
+    font-size: 40px; /* Tamaño de la fuente */
+    font-family: Arial, sans-serif; /* Fuente */
+}
+
+.left {
+    flex: 1;
+    color: white;
+    font-size: 50px;
+    padding-left: 10px;
+}
+.example-spacer {
+    flex: 2 1 auto;
+  }

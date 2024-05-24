@@ -12,6 +12,13 @@ export class VerComponent implements OnInit{
 
   id:number;
   tarea: Tarea;
+  formatLabel(value: number): string {
+    if (value >= 1000) {
+      return Math.round(value / 1000) + '%';
+    }
+
+    return `${value}`;
+  }
 
   constructor(private route:ActivatedRoute, private tareaserv: VideoServService){}
 

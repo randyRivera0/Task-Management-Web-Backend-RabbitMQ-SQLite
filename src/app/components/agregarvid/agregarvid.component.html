@@ -1,5 +1,8 @@
-<div class="col-md-6 offset-md-3">
-    <h3 class="text-center">Tarea Addition</h3>
+<app-navbar></app-navbar>
+
+<body>
+  <div class="col-md-6 offset-md-3">
+    <h3 class="text-center">Task Addition</h3>
     <form (ngSubmit)= "onSubmit()" #tareaForm="ngForm">
         <div class="form-group">
             <label>Titulo: </label>
@@ -114,7 +117,65 @@
             >
         </div> -->
 
-        <button class="btn btn-success" [disabled]= "!tareaForm.form.valid">Guardar</button>
+        <button class="btn btn-success" [disabled]= "!tareaForm.form.valid" id="liveToastBtn">Guardar</button>
+        <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+          <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+              <img src="..." class="rounded me-2" alt="...">
+              <strong class="me-auto">REGISTRADA</strong>
+              <small> . </small>
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+              Hola! Tu tarea ha sido asignada con éxito
+            </div>
+          </div>
+        </div>
+
     </form>
     
 </div>
+<br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+</body>
