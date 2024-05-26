@@ -1,11 +1,17 @@
-import sqlite3
+import os, sqlite3, utils
 
 table = input("Enter table name: ")
 task_id = input("Enter task id: ")
 unblocker_name = input("Enter your name: ")  # Assume the current user's name is provided
 
-# Connect to the SQLite database
-conn = sqlite3.connect('tasks.db')
+# Get the current working directory
+cwd = os.getcwd()
+
+# Define the path to the database file relative to the current working directory
+db_path = os.path.join(cwd, 'prototype\\tasks.db')
+
+# Connect to the database
+conn = utils.connect_to_db()
 cursor = conn.cursor()
 
 def unblock_task(task_id, unblocker_name):

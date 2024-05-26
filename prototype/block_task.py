@@ -1,11 +1,11 @@
-import sqlite3
+import sqlite3, utils
 
 table = input("Enter table name: ")
 task_id = input("Enter task id: ")
 blocker_name = input("Enter your name: ")  # Assume the name of the person blocking the task is provided
 
 # Connect to the SQLite database
-conn = sqlite3.connect('tasks.db')
+conn = utils.connect_to_db()
 cursor = conn.cursor()
 
 def block_task(task_id, blocker_name):

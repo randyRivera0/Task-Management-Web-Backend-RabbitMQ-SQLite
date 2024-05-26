@@ -1,6 +1,6 @@
 import os
 import datetime
-import sqlite3
+import sqlite3, utils
 from importance_enum import Importance
 
 
@@ -23,15 +23,7 @@ def formula(duration, progress, deadline):
 
 
 def rearrange_table2():
-    # Get the current working directory
-    cwd = os.getcwd()
-
-    # Define the path to the database file relative to the current working directory
-    db_path = os.path.join(cwd, 'prototype\\tasks.db')
-
-    # Connect to the database
-    conn = sqlite3.connect(db_path)
-    conn.create_function("formula", 3, formula)
+    conn = utils.connect_to_db()
 
     c = conn.cursor()
 

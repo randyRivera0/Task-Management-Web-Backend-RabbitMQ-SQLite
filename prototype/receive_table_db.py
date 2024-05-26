@@ -1,4 +1,4 @@
-import json, sys, pika, time, sqlite3, os
+import json, sys, pika, time, sqlite3, os, utils
 import Task  # Import the Task class from task.py
 
 # Function to process received task
@@ -18,13 +18,7 @@ def process_task(channel, method, properties, body):
 # Adjusted store_task_in_database function
 def store_task_in_database(department, task):
     try:
-         # Get the current working directory
-        cwd = os.getcwd()
-
-        # Define the path to the database file relative to the current working directory
-        db_path = os.path.join(cwd, 'prototype\\tasks.db')
-        # Connect to the SQLite database
-        conn = sqlite3.connect(db_path)
+        conn = utils.connect_to_db()
         print("Connection with the DataBase successful")
         c = conn.cursor()
 
