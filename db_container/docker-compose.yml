@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  rabbitmq:
+    image: rabbitmq:latest
+    ports:
+      - "5672:5672"  # RabbitMQ port
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: password
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
+  your_service:
+    build: 
+      context: .
+      dockerfile: Dockerfile  # Path to your Dockerfile
+    depends_on:
+      - rabbitmq  # Corrected service name
+    environment:
+      RABBITMQ_HOST: rabbitmq  # Use the service name as the hostname
+      RABBITMQ_PORT: 5672
+
+volumes:
+  rabbitmq_data:
