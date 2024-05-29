@@ -1,5 +1,4 @@
 import pika, sys
-import Task
 
 # Function to prompt user for task input
 from Task import Task
@@ -28,7 +27,7 @@ def get_task_from_input():
 
 # Function to send task JSON via RabbitMQ
 def send_task_via_rabbitmq(task_json, queue_name):
-    connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters('172.17.0.2'))
     channel = connection.channel()
     channel.queue_declare(queue=queue_name, durable=True)
     channel.basic_publish(exchange='',

@@ -68,9 +68,9 @@ def create_database_schema():
     cwd = os.getcwd()
 
     # Define the path to the database file relative to the current working directory
-    db_path = os.path.join(cwd, 'prototype\\tasks.db')
+    # db_path = os.path.join(cwd, 'prototype\\tasks.db')
     # Connect to the SQLite database
-    conn = sqlite3.connect(db_path)
+    conn = sqlite3.connect('tasks.db')
     c = conn.cursor()
 
     # Create table if not exists
