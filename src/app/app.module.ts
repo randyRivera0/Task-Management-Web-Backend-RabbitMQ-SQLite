@@ -25,6 +25,9 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { DashempleadoComponent } from './components/dashempleado/dashempleado.component';
+import {MatButtonModule} from '@angular/material/button';
+import { TasktakenComponent } from './components/tasktaken/tasktaken.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +40,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     LoginComponent,
     InicioComponent,
     NavbarComponent,
+    DashempleadoComponent,
+    TasktakenComponent,
     
     
   ],
@@ -55,7 +60,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatNativeDateModule,
     MatPaginatorModule,
     MatSliderModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatButtonModule,
+    
     
    
     

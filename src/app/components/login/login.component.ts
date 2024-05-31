@@ -30,9 +30,10 @@ export class LoginComponent implements OnInit {
   }
 
   onSignUp(){
-
+    console.log('onSignUp method called');
     this.signupUsers.push(this.signupObj);
     localStorage.setItem('signupUsers', JSON.stringify(this.signupUsers));
+    console.log('Usuario registrado:', this.signupObj);
     this.signupObj = {
       username:'',
       password:'',
@@ -45,12 +46,15 @@ export class LoginComponent implements OnInit {
     const isUserExist = this.signupUsers.find( m => m.username == this.loginObj.username && m.password == this.loginObj.password);
     if ( isUserExist != undefined ){
       alert('login succes');
-      this.router.navigate(['/inicio']);
+      if ( isUserExist.role == 'administrador' ){
+        this.router.navigate(['/inicio']);
+      } else if (isUserExist.role == 'empleado'){
+          this.router.navigate(['/dashempleado']);
+      }
+    
     } else {
       alert('wrong credentials');
     }
   }
-
-  
 
 }

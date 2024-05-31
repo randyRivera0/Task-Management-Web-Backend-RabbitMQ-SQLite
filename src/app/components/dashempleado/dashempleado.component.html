@@ -1,0 +1,41 @@
+<body>
+    
+    <div class="container">
+        <br>
+        <button mat-fab extended color="accent">
+            Tomar tarea
+          </button>
+        <br>
+        <br>
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <input type="text" class="form-control" title="filterTarea" placeholder="Buscar..." [(ngModel)]="filterTarea">
+            </div>
+    
+        </div>
+    
+    </div>
+        <table class="table table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Titulo</th>
+                    <th>Descrption</th>
+                    <!-- <th>Estado</th> -->
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor= "let tarea of tareas | filter:filterTarea"> 
+                    <td>{{ tarea.title }}</td>
+                    <td>{{tarea.description}}</td>
+                    <!-- <td>
+                        <mat-slide-toggle [(ngModel)]="estadosSlideToggle[video.id]" (change)="guardarEstadosSlideToggle()"></mat-slide-toggle>
+                    </td> -->
+                </tr>
+            </tbody>
+    
+        </table>
+    </div>
+
+</body>

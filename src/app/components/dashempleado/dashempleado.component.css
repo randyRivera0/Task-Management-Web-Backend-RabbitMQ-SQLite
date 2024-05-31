@@ -1,0 +1,12 @@
+.ancho{
+    width: 80%;
+}
+body {
+    background-image: url('../../../assets/fondoteclado.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
