@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col">
             <div class="form-group">
-                <input type="text" class="form-control" title="filterTarea" placeholder="Buscar..." [(ngModel)]="filterTarea">
+                <input type="text" class="form-control" name="filterTarea" placeholder="Buscar..." [(ngModel)]="filterTarea">
             </div>
     
         </div>
@@ -21,16 +21,18 @@
             <thead class="table-dark">
                 <tr>
                     <th>Titulo</th>
-                    <th>Descrption</th>
-                    <!-- <th>Estado</th> -->
+                    <th>Descripcion</th>
+                    <th>Fecha límite</th>
+                    <!-- <th>progress</th> -->
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor= "let tarea of tareas | filter:filterTarea"> 
-                    <td>{{ tarea.title }}</td>
+                    <td>{{ tarea.name }}</td>
                     <td>{{tarea.description}}</td>
+                    <td>{{tarea.deadline}}</td>
                     <!-- <td>
-                        <mat-slide-toggle [(ngModel)]="estadosSlideToggle[video.id]" (change)="guardarEstadosSlideToggle()"></mat-slide-toggle>
+                        <mat-slide-toggle [(ngModel)]="progresssSlideToggle[video.id]" (change)="guardarprogresssSlideToggle()"></mat-slide-toggle>
                     </td> -->
                 </tr>
             </tbody>

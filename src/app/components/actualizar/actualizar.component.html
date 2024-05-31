@@ -5,82 +5,99 @@
     <form (ngSubmit)= "onSubmit()" #tareaForm = "ngForm">
 
       <div class="form-group">
-        <label>Title: </label>
+        <label>progress: </label>
         <input type = "text"
         class="form-control"
-        id = "title"
-        [(ngModel)]= "tarea.title"
-        name = "title"
-        required
-        minlength="4"
-        maxlength="30"
-        placeholder="Digite el Titulo"
-        #title = "ngModel"
-        >
-        <div class="alert alert-danger" *ngIf= "title.invalid && (title.dirty || title.touched)">
-          <div *ngIf = "title.errors?.['required']">
-            Digite titulo
-          </div>
-          <div *ngIf = "title.errors?.['minlength']">
-            El titulo tiene que contener como minimo 4 caracteres
-          </div>
-          <div *ngIf = "title.errors?.['maxlength']">
-            El titulo tiene que tener como maximo 30 caracteres
-          </div>
-        </div>
-      </div>
-  
-      <div class="form-group">
-        <label>Descrption: </label>
-        <input type = "text"
-        class="form-control"
-        id = "description"
-        [(ngModel)] = "tarea.description"
-        name = "description"
-        required
-        minlength="4"
-        maxlength="130"
-        placeholder="Digite la description"
-        #description = "ngModel"
-        >
-        <div class="alert alert-danger" *ngIf= "description.invalid && (description.dirty || description.touched)">
-          <div *ngIf = "description.errors?.['required']">
-            Digite su description por favor
-          </div>
-          <div *ngIf = "description.errors?.['minlength']">
-            tiene que contener como minimo 4 caracteres
-          </div>
-          <div *ngIf = "description.errors?.['maxlength']">
-            tiene que tener como maximo 130 caracteres
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label>Estado: </label>
-        <input type = "text"
-        class="form-control"
-        id = "estado"
-        [(ngModel)] = "tarea.estado"
-        name = "estado"
+        id = "progress"
+        [(ngModel)] = "tarea.progress"
+        name = "progress"
         required
         minlength="8"
         maxlength="11"
-        placeholder="Digite estado de tarea"
-        #estado = "ngModel"
+        placeholder="Digite progress de tarea"
+        #progress = "ngModel"
         >
-        <div class="alert alert-danger" *ngIf= "estado.invalid && (estado.dirty || estado.touched)">
-          <div *ngIf = "estado.errors?.['required']">
-            Digite estado por favor
+        <div class="alert alert-danger" *ngIf= "progress.invalid && (progress.dirty || progress.touched)">
+          <div *ngIf = "progress.errors?.['required']">
+            Digite progress por favor
           </div>
-          <div *ngIf = "estado.errors?.['minlength']">
+          <div *ngIf = "progress.errors?.['minlength']">
             tiene que contener como minimo 8 caracteres
           </div>
-          <div *ngIf = "estado.errors?.['maxlength']">
+          <div *ngIf = "progress.errors?.['maxlength']">
             tiene que tener como maximo 11 caracteres
           </div>
         </div>
       </div>
+      <div class="form-group">
+        <label> Bloqueo: </label>
+        <input type="text"
+        class="form-control"
+        id = "blocked"
+        [(ngModel)] = "tarea.blocked"
+        name="blocked"
+        required
+        placeholder=" 1  o  0"
+        #blocked = "ngModel"
+        >
+        <div class="alert alert-danger" *ngIf= "blocked.invalid && (blocked.dirty || blocked.touched)">
+            <div *ngIf = "blocked.errors?.['required']">
+              establezca si la tarea está bloqueada
+            </div>
+          </div>
+    </div>
+         <div class="form-group">
+          <label> Bloqueada por: </label>
+          <input type="text"
+          class="form-control"
+          id = "blocked_by"
+          [(ngModel)] = "tarea.blocked_by"
+          name="blocked_by"
+          required
+          minlength="8"
+          maxlength="30"
+          placeholder="Nombre de usuario quien la bloquea"
+          #blocked_by = "ngModel"
+          >
+          <div class="alert alert-danger" *ngIf= "blocked_by.invalid && (blocked_by.dirty || blocked_by.touched)">
+              <div *ngIf = "blocked_by.errors?.['required']">
+                quién la bloquea
+              </div>
+              <div *ngIf = "blocked_by.errors?.['minlength']">
+                tiene que contener como minimo 8 caracteres
+              </div>
+              <div *ngIf = "blocked_by.errors?.['maxlength']">
+                tiene que tener como maximo 30   caracteres
+              </div>
+            </div>
+      </div> 
+      
+    <div class="form-group">
+      <label> razón para bloquearla: </label>
+      <input type="text"
+      class="form-control"
+      id = "blocked_reason"
+      [(ngModel)] = "tarea.blocked_reason"
+      name="blocked_reason"
+      required
+      minlength="6"
+      maxlength="50"
+      placeholder="indique no hay razón alguna si no la ha bloqueado"
+      #blocked_reason = "ngModel"
+      >
+      <div class="alert alert-danger" *ngIf= "blocked_reason.invalid && (blocked_reason.dirty || blocked_reason.touched)">
+          <div *ngIf = "blocked_reason.errors?.['required']">
+            Digite progress por favor
+          </div>
+          <div *ngIf = "blocked_reason.errors?.['minlength']">
+            tiene que contener como minimo 6 caracteres
+          </div>
+          <div *ngIf = "blocked_reason.errors?.['maxlength']">
+            tiene que tener como maximo 30   caracteres
+          </div>
+        </div>
+    </div> 
+      
 
       
       <button class="btn btn-success" [disabled]= "!tareaForm.form.valid">Guardar</button>

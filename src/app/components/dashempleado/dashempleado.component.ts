@@ -29,4 +29,8 @@ export class DashempleadoComponent  implements OnInit{
     });
   }
 
+  tomartask(){
+    
+  }
+
 }

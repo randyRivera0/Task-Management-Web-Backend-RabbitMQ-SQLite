@@ -13,26 +13,26 @@ import { Tarea } from 'src/app/tarea';
 })
 export class ListaVideosComponent implements OnInit {
 
-  // estadosSlideToggle: { [key: number]: boolean } = {};
+  // progresssSlideToggle: { [key: number]: boolean } = {};
   tareas: Tarea[];
 
   
   constructor(private tareaserv: VideoServService,  private router: Router){}
   filterTarea:'';
   ngOnInit(): void {
-    // this.cargarEstadosSlideToggle();
+    // this.cargarprogresssSlideToggle();
 
     this.obtenertareas();
 
   }
-//   guardarEstadosSlideToggle(): void {
-//     localStorage.setItem('estadosSlideToggle', JSON.stringify(this.estadosSlideToggle));
+//   guardarprogresssSlideToggle(): void {
+//     localStorage.setItem('progresssSlideToggle', JSON.stringify(this.progresssSlideToggle));
 // }
 
-//   cargarEstadosSlideToggle(): void {
-//     const estados = JSON.parse(localStorage.getItem('estadosSlideToggle') || '{}');
+//   cargarprogresssSlideToggle(): void {
+//     const progresss = JSON.parse(localStorage.getItem('progresssSlideToggle') || '{}');
 //     this.videos.forEach(video => {
-//         this.estadosSlideToggle[video.id] = estados[video.id] || false;
+//         this.progresssSlideToggle[video.id] = progresss[video.id] || false;
 //     });
 // }
 
@@ -67,8 +67,8 @@ export class ListaVideosComponent implements OnInit {
   // }
 
   // getSlideToggleState(index: number): boolean {
-  //   const estadoGuardado = window.localStorage.getItem(`slideToggleState${index}`);
-  //   return estadoGuardado ? JSON.parse(estadoGuardado) : false;
+  //   const progressGuardado = window.localStorage.getItem(`slideToggleState${index}`);
+  //   return progressGuardado ? JSON.parse(progressGuardado) : false;
   // }
 
 

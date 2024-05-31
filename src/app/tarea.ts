@@ -1,7 +1,13 @@
 export class Tarea {
     id: number;
-    title: string;
+    name: string;
     description:string;
-    estado: string;
-    importancia: string;
+    importance: string;
+    progress: number;
+    duration: number;
+    deadline: string;
+    blocked: boolean;
+    blocked_by: string;
+    blocked_reason: string;
+
 }

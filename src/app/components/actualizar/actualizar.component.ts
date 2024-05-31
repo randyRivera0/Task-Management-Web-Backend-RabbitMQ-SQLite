@@ -14,7 +14,7 @@ export class ActualizarComponent implements OnInit{
   form : FormGroup;
 
   id:number;
-  title:string;
+  name:string;
   tarea:Tarea = new Tarea();
 
   constructor(private tareaserv: VideoServService, private router: Router, private route:ActivatedRoute, private fb: FormBuilder){
