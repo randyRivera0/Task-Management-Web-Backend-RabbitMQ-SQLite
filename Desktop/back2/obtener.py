@@ -14,6 +14,7 @@ tasks = []
 @app.route('/obtener', methods=['GET'])
 def obtener_tareas():
     receive_tasks_from_rabbitmq()
+    print(tasks)
     return tasks
 
 
