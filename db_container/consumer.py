@@ -8,7 +8,7 @@ sys.path.append(parent_dir)
 # Now you should be able to import the utils module
 import utils
 
-import json, pika, time, sqlite3, utils
+import json, pika, time, sqlite3
 import Task  # Import the Task class from task.py
 
 
@@ -62,7 +62,7 @@ def obtain_tasks(db='tasks.db'):
 
 
 
-def send_task_via_rabbitmq(task_json, queue_name):
+def send_task_via_rabbitmq(task_json, queue_name='client'):
     connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
     channel = connection.channel()
     channel.queue_declare(queue=queue_name, durable=True)
