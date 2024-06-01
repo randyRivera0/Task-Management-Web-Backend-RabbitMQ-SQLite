@@ -76,23 +76,23 @@
       <label> razón para bloquearla: </label>
       <input type="text"
       class="form-control"
-      id = "blocked_reason"
-      [(ngModel)] = "tarea.blocked_reason"
-      name="blocked_reason"
+      id = "block_reason"
+      [(ngModel)] = "tarea.block_reason"
+      name="block_reason"
       required
       minlength="6"
       maxlength="50"
       placeholder="indique no hay razón alguna si no la ha bloqueado"
-      #blocked_reason = "ngModel"
+      #block_reason = "ngModel"
       >
-      <div class="alert alert-danger" *ngIf= "blocked_reason.invalid && (blocked_reason.dirty || blocked_reason.touched)">
-          <div *ngIf = "blocked_reason.errors?.['required']">
+      <div class="alert alert-danger" *ngIf= "block_reason.invalid && (block_reason.dirty || block_reason.touched)">
+          <div *ngIf = "block_reason.errors?.['required']">
             Digite progress por favor
           </div>
-          <div *ngIf = "blocked_reason.errors?.['minlength']">
+          <div *ngIf = "block_reason.errors?.['minlength']">
             tiene que contener como minimo 6 caracteres
           </div>
-          <div *ngIf = "blocked_reason.errors?.['maxlength']">
+          <div *ngIf = "block_reason.errors?.['maxlength']">
             tiene que tener como maximo 30   caracteres
           </div>
         </div>

@@ -8,6 +8,6 @@ export class Tarea {
     deadline: string;
     blocked: boolean;
     blocked_by: string;
-    blocked_reason: string;
+    block_reason: string;
 
 }

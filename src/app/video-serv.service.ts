@@ -10,7 +10,7 @@ import { Tarea } from './tarea';
 export class VideoServService {
 
   //url obtiene el listado de todos los videos en el backend
-  private baseURL ="http://localhost:8090/tareas";
+  private baseURL ="http://127.0.0.1:5000";
 
   constructor(private httpClient: HttpClient) { }
 
