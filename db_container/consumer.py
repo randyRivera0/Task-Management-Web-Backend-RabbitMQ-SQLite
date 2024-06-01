@@ -63,7 +63,7 @@ def obtain_tasks(db='tasks.db'):
 
 
 def send_task_via_rabbitmq(task_json, queue_name='client'):
-    connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+    connection = pika.BlockingConnection(pika.ConnectionParameters(host='172.17.0.2'))
     channel = connection.channel()
     channel.queue_declare(queue=queue_name, durable=True)
     channel.basic_publish(exchange='',
