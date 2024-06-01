@@ -21,6 +21,8 @@ def process_task(channel, method, properties, body):
     # Store task in the database
     store_task_in_database(department, task)
 
+    send_clients_(obtain_tasks())
+
     # TODO: After task or after db ack?
     channel.basic_ack(delivery_tag=method.delivery_tag)
 
@@ -104,3 +106,28 @@ while True:
         receive_tasks_from_rabbitmq(department)
         time.sleep(1)  # Wait for 1 seconds before checking again
                 
+
+def send_clients():
+    tasks = obtain_tasks()
+    
+    pass
+
+def obtain_tasks(db='tasks.db'):
+    # Connect to the SQLite database
+    conn = sqlite3.connect(database_file)
+    cursor = conn.cursor()
+
+    try:
+        # Execute a SELECT query to retrieve all tasks
+        cursor.execute("SELECT * FROM tasks")
+        
+        # Fetch all rows from the result set
+        tasks = cursor.fetchall()
+        
+        return tasks
+    except sqlite3.Error as e:
+        print("Error retrieving tasks:", e)
+        return None
+    finally:
+        # Close the database connection
+        conn.close()
