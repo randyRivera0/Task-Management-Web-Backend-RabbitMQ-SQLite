@@ -21,7 +21,7 @@ def process_task(channel, method, properties, body):
     # Store task in the database
     store_task_in_database(department, task)
 
-    send_clients_(obtain_tasks())
+    send_clients_()
 
     # TODO: After task or after db ack?
     channel.basic_ack(delivery_tag=method.delivery_tag)
@@ -105,10 +105,25 @@ while True:
         print("Program is running. Press Ctrl+C to exit.")
         receive_tasks_from_rabbitmq(department)
         time.sleep(1)  # Wait for 1 seconds before checking again
-                
+
+
+def send_task_via_rabbitmq(task_json, queue_name):
+    connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
+    channel = connection.channel()
+    channel.queue_declare(queue=queue_name, durable=True)
+    channel.basic_publish(exchange='',
+                          routing_key=queue_name,
+                          body=task_json,
+                          properties=pika.BasicProperties(
+                              delivery_mode=2,  # make message persistent
+                          ))
+    print("Task sent to RabbitMQ")
+    connection.close()            
+
 
 def send_clients():
-    tasks = obtain_tasks()
+    tasks_strings = obtain_tasks()
+    send_task_via_rabbitmq(tasks_strings)
     
     pass
 
@@ -123,8 +138,9 @@ def obtain_tasks(db='tasks.db'):
         
         # Fetch all rows from the result set
         tasks = cursor.fetchall()
-        
-        return tasks
+        # Convert tasks tuples to a big string
+        tasks_string = "\n".join(map(str, tasks))
+        return tasks_string
     except sqlite3.Error as e:
         print("Error retrieving tasks:", e)
         return None
